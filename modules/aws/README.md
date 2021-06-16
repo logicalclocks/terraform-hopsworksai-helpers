@@ -22,7 +22,7 @@ provider "aws" {
 }
 
 module "aws" {
-    source = "logicalclocks/helpers/hopsworksai/modules/aws"
+    source = "logicalclocks/helpers/hopsworksai//modules/aws"
     region = local.region
 }
 ```
@@ -54,7 +54,7 @@ provider "aws" {
 }
 
 module "aws" {
-    source = "logicalclocks/helpers/hopsworksai/modules/aws"
+    source = "logicalclocks/helpers/hopsworksai//modules/aws"
     region = local.region
     bucket_name = "my-bucket"
     instance_profile_name = "my-instance-profile"
@@ -81,7 +81,7 @@ provider "aws" {
 }
 
 module "aws" {
-    source = "logicalclocks/helpers/hopsworksai/modules/aws"
+    source = "logicalclocks/helpers/hopsworksai//modules/aws"
     region = local.region
     instance_profile_permissions = {
         enable_storage     = true

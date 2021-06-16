@@ -19,7 +19,7 @@ provider "azurerm" {
 }
 
 module "azure" {
-    source = "logicalclocks/helpers/hopsworksai/modules/azure"
+    source = "logicalclocks/helpers/hopsworksai//modules/azure"
     resource_group = "<YOUR_RESOURCE_GROUP>"
 }
 ```
@@ -47,7 +47,7 @@ provider "azurerm" {
 }
 
 module "azure" {
-    source = "logicalclocks/helpers/hopsworksai/modules/azure"
+    source = "logicalclocks/helpers/hopsworksai//modules/azure"
     resource_group = "<YOUR_RESOURCE_GROUP>"
     storage_account_name = "mystorageaccount"
     user_assigned_identity_name = "my-user-assigned-managed-identity"
@@ -71,7 +71,7 @@ provider "azurerm" {
 }
 
 module "azure" {
-    source = "logicalclocks/helpers/hopsworksai/modules/azure"
+    source = "logicalclocks/helpers/hopsworksai//modules/azure"
     resource_group = "<YOUR_RESOURCE_GROUP>"
     user_assigned_identity_permissions = {
         enable_storage     = true
