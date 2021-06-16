@@ -8,8 +8,8 @@ terraform {
     }
 
     hopsworksai = {
-      source = "logicalclocks/hopsworksai"
-      #version = ">= 0.2.0"
+      source  = "logicalclocks/hopsworksai"
+      version = ">= 0.2.0"
     }
 
     random = {
