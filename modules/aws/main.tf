@@ -51,6 +51,10 @@ resource "aws_iam_instance_profile" "profile" {
   role = aws_iam_role.role.name
 }
 
+data "aws_iam_instance_profile" "profile" {
+  name = aws_iam_instance_profile.profile.name
+}
+
 # Create an S3 bucket and block all public access to it
 resource "aws_s3_bucket" "bucket" {
   bucket        = local.bucket_name
