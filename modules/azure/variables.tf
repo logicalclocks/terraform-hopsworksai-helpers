@@ -21,13 +21,11 @@ variable "user_assigned_identity_permissions" {
     enable_storage     = bool
     enable_backup      = bool
     enable_aks_and_acr = bool
-    enable_upgrade     = bool
   })
   default = {
     enable_storage     = true
     enable_backup      = true
     enable_aks_and_acr = true
-    enable_upgrade     = true
   }
 }
 
