@@ -20,7 +20,6 @@ data "hopsworksai_aws_instance_profile_policy" "policy" {
   enable_backup      = var.instance_profile_permissions.enable_backup
   enable_cloud_watch = var.instance_profile_permissions.enable_cloud_watch
   enable_eks_and_ecr = var.instance_profile_permissions.enable_eks_and_ecr
-  enable_upgrade     = var.instance_profile_permissions.enable_upgrade
 }
 
 resource "aws_iam_role" "role" {
@@ -58,8 +57,12 @@ data "aws_iam_instance_profile" "profile" {
 # Create an S3 bucket and block all public access to it
 resource "aws_s3_bucket" "bucket" {
   bucket        = local.bucket_name
-  acl           = "private"
   force_destroy = true
+}
+
+resource "aws_s3_bucket_acl" "bucket" {
+  bucket = aws_s3_bucket.bucket.id
+  acl    = "private"
 }
 
 resource "aws_s3_bucket_public_access_block" "block_bucket" {

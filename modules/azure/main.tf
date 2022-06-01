@@ -42,7 +42,6 @@ data "hopsworksai_azure_user_assigned_identity_permissions" "storage_policy" {
   enable_storage     = var.user_assigned_identity_permissions.enable_storage
   enable_backup      = var.user_assigned_identity_permissions.enable_backup
   enable_aks_and_acr = false
-  enable_upgrade     = false
 }
 
 resource "azurerm_role_definition" "storage_role" {
@@ -64,17 +63,16 @@ resource "azurerm_role_assignment" "storage_role_assignment" {
   principal_id       = azurerm_user_assigned_identity.identity.principal_id
 }
 
-# add upgrade and aks/acr permissions on the resource group
+# add aks/acr permissions on the resource group
 data "hopsworksai_azure_user_assigned_identity_permissions" "resource_group_policy" {
-  count              = var.user_assigned_identity_permissions.enable_aks_and_acr || var.user_assigned_identity_permissions.enable_upgrade ? 1 : 0
+  count              = var.user_assigned_identity_permissions.enable_aks_and_acr ? 1 : 0
   enable_storage     = false
   enable_backup      = false
   enable_aks_and_acr = var.user_assigned_identity_permissions.enable_aks_and_acr
-  enable_upgrade     = var.user_assigned_identity_permissions.enable_upgrade
 }
 
 resource "azurerm_role_definition" "rg_role" {
-  count = var.user_assigned_identity_permissions.enable_aks_and_acr || var.user_assigned_identity_permissions.enable_upgrade ? 1 : 0
+  count = var.user_assigned_identity_permissions.enable_aks_and_acr ? 1 : 0
   name  = "${local.user_assigned_identity_name}-rg-role"
   scope = data.azurerm_resource_group.rg.id
   permissions {
@@ -86,7 +84,7 @@ resource "azurerm_role_definition" "rg_role" {
 }
 
 resource "azurerm_role_assignment" "rg_role_assignment" {
-  count              = var.user_assigned_identity_permissions.enable_aks_and_acr || var.user_assigned_identity_permissions.enable_upgrade ? 1 : 0
+  count              = var.user_assigned_identity_permissions.enable_aks_and_acr ? 1 : 0
   scope              = data.azurerm_resource_group.rg.id
   role_definition_id = azurerm_role_definition.rg_role.0.role_definition_resource_id
   principal_id       = azurerm_user_assigned_identity.identity.principal_id

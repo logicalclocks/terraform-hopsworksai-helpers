@@ -4,17 +4,17 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "3.42.0"
+      version = "4.16.0"
     }
 
     hopsworksai = {
       source  = "logicalclocks/hopsworksai"
-      version = ">= 0.2.0"
+      version = ">= 0.10.1"
     }
 
     random = {
       source  = "hashicorp/random"
-      version = "3.1.0"
+      version = "3.2.0"
     }
   }
 }
