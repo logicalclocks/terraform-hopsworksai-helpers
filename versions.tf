@@ -4,21 +4,21 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "4.16.0"
+      version = ">= 4.16.0"
     }
 
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "3.8.0"
+      version = ">= 3.8.0"
     }
 
     hopsworksai = {
       source  = "logicalclocks/hopsworksai"
-      version = ">= 0.10.1"
+      version = ">= 1.4.0"
     }
     random = {
       source  = "hashicorp/random"
-      version = "3.2.0"
+      version = ">= 3.2.0"
     }
   }
 }

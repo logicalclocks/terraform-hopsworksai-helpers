@@ -22,13 +22,15 @@ variable "instance_profile_permissions" {
     enable_storage     = bool
     enable_backup      = bool
     enable_cloud_watch = bool
-    enable_eks_and_ecr = bool
+    enable_eks         = bool
+    enable_ecr         = bool
   })
   default = {
     enable_storage     = true
     enable_backup      = true
     enable_cloud_watch = true
-    enable_eks_and_ecr = true
+    enable_eks         = true
+    enable_ecr         = true
   }
 }
 

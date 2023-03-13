@@ -18,14 +18,16 @@ variable "user_assigned_identity_name" {
 variable "user_assigned_identity_permissions" {
   description = "Enable the different permissions required to by Hopsworks clusters."
   type = object({
-    enable_storage     = bool
-    enable_backup      = bool
-    enable_aks_and_acr = bool
+    enable_storage = bool
+    enable_backup  = bool
+    enable_aks     = bool
+    enable_acr     = bool
   })
   default = {
-    enable_storage     = true
-    enable_backup      = true
-    enable_aks_and_acr = true
+    enable_storage = true
+    enable_backup  = true
+    enable_aks     = true
+    enable_acr     = true
   }
 }
 

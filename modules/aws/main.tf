@@ -19,7 +19,8 @@ data "hopsworksai_aws_instance_profile_policy" "policy" {
   enable_storage     = var.instance_profile_permissions.enable_storage
   enable_backup      = var.instance_profile_permissions.enable_backup
   enable_cloud_watch = var.instance_profile_permissions.enable_cloud_watch
-  enable_eks_and_ecr = var.instance_profile_permissions.enable_eks_and_ecr
+  enable_eks         = var.instance_profile_permissions.enable_eks
+  enable_ecr         = var.instance_profile_permissions.enable_ecr
 }
 
 resource "aws_iam_role" "role" {
