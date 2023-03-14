@@ -76,8 +76,8 @@ module "azure" {
     user_assigned_identity_permissions = {
         enable_storage     = true
         enable_backup      = true
-        enable_aks_and_acr = false
-        enable_upgrade     = false    
+        enable_acr         = false
+        enable_aks         = true
     }
 }
 ```

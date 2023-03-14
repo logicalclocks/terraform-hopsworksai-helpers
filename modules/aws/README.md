@@ -87,8 +87,8 @@ module "aws" {
         enable_storage     = true
         enable_backup      = true
         enable_cloud_watch = true
-        enable_eks_and_ecr = false
-        enable_upgrade     = false
+        enable_eks         = true
+        enable_ecr         = true
     }
 }
 ```
