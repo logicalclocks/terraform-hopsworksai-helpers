@@ -38,10 +38,11 @@ resource "azurerm_user_assigned_identity" "identity" {
 # Add permissions to the user assigned identity
 # add storage permissions on the storage account 
 data "hopsworksai_azure_user_assigned_identity_permissions" "storage_policy" {
-  count              = var.user_assigned_identity_permissions.enable_storage || var.user_assigned_identity_permissions.enable_backup ? 1 : 0
-  enable_storage     = var.user_assigned_identity_permissions.enable_storage
-  enable_backup      = var.user_assigned_identity_permissions.enable_backup
-  enable_aks_and_acr = false
+  count          = var.user_assigned_identity_permissions.enable_storage || var.user_assigned_identity_permissions.enable_backup ? 1 : 0
+  enable_storage = var.user_assigned_identity_permissions.enable_storage
+  enable_backup  = var.user_assigned_identity_permissions.enable_backup
+  enable_aks     = false
+  enable_acr     = false
 }
 
 resource "azurerm_role_definition" "storage_role" {
