@@ -61,19 +61,6 @@ resource "aws_s3_bucket" "bucket" {
   force_destroy = true
 }
 
-resource "aws_s3_bucket_acl" "bucket" {
-  bucket = aws_s3_bucket.bucket.id
-  acl    = "private"
-}
-
-resource "aws_s3_bucket_public_access_block" "block_bucket" {
-  bucket                  = aws_s3_bucket.bucket.id
-  block_public_acls       = true
-  block_public_policy     = true
-  restrict_public_buckets = true
-  ignore_public_acls      = true
-}
-
 # Create an ssh key pair
 resource "aws_key_pair" "key" {
   key_name   = local.ssh_key_pair_name
