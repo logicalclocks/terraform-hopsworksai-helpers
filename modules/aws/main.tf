@@ -44,6 +44,8 @@ resource "aws_iam_role" "role" {
     name   = "hopsworksai"
     policy = data.hopsworksai_aws_instance_profile_policy.policy.json
   }
+
+  managed_policy_arns = var.instance_profile_permissions.enable_ssm ? ["arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore", "arn:aws:iam::aws:policy/AmazonSSMPatchAssociation"] : []
 }
 
 resource "aws_iam_instance_profile" "profile" {
