@@ -24,6 +24,7 @@ variable "instance_profile_permissions" {
     enable_cloud_watch = bool
     enable_eks         = bool
     enable_ecr         = bool
+    enable_ssm         = bool
   })
   default = {
     enable_storage     = true
@@ -31,6 +32,7 @@ variable "instance_profile_permissions" {
     enable_cloud_watch = true
     enable_eks         = true
     enable_ecr         = true
+    enable_ssm         = true
   }
 }
 
